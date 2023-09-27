@@ -54,14 +54,24 @@ class Tracker {
 
   _progress() {
     const progressBar = document.getElementById('progress-bar');
-    const width =
-      100 -
-      ((this._calorieLimit - this._totalCalories) / this._calorieLimit) * 100;
-
+    const percentage = (this._totalCalories / this._calorieLimit) * 100;
+    const width = Math.min(percentage, 100);
     progressBar.style.width = `${width}%`;
 
-    if (width <= 15) {
+    console.log(width);
+
+    if (width >= 95) {
       progressBar.style.background = '#dc3545';
+    } else {
+      progressBar.style.background = '#599f3d';
+    }
+
+    if (this._calorieLimit - this._totalCalories <= 0) {
+      document.getElementById('remaining-box').style.background = '#dc3545';
+      document.getElementById('remaining-box').style.color = 'white';
+    } else {
+      document.getElementById('remaining-box').style.background = '#f8f9fa';
+      document.getElementById('remaining-box').style.color = '#212529';
     }
   }
 
@@ -91,8 +101,9 @@ class Workout {
 }
 
 const tracker = new Tracker();
-const food = new Meal('lunch', 800);
+const food = new Meal('lunch', 2800);
 tracker.addMeal(food);
 
-const workout = new Workout('run', 500);
+const workout = new Workout('run', 2000);
+
 tracker.addWorkout(workout);
