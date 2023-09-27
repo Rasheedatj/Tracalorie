@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/dist/output.css" rel="stylesheet" />
+    <link href="./dist/output.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,35 +46,43 @@
         <div
           class="bg-primaryDark flex flex-col gap-[.6rem] text-center text-white rounded-[5px] md:col-start-1 md:col-end-4 py-[2rem]"
         >
-          <h1 class="font-[700] text-[32px] leading-[35px]">2000</h1>
+          <h1 class="font-[700] text-[32px] leading-[35px]" id="limit">2000</h1>
           <p class="capitalize font-[400] text-[18px]">Daily Calorie limit</p>
         </div>
 
         <div
           class="bg-primary flex flex-col gap-[.6rem] text-center text-white rounded-[5px] md:col-start-4 md:col-end-7 py-[2rem]"
         >
-          <h1 class="font-[700] text-[32px] leading-[35px]">400</h1>
+          <h1 class="font-[700] text-[32px] leading-[35px]" id="total-calories">
+            400
+          </h1>
           <p class="capitalize font-[400] text-[18px]">gain/Loss</p>
         </div>
 
         <div
           class="bg-grayPrimary border-[1px] text-primaryDark border-solid rounded-[5px] border-grayBorder flex flex-col gap-[.6rem] text-center py-[2rem] md:col-start-1 md:col-end-3"
         >
-          <h1 class="font-[700] text-[32px] leading-[35px]">700</h1>
+          <h1 class="font-[700] text-[32px] leading-[35px]" id="consumedCal">
+            700
+          </h1>
           <p class="capitalize font-[400] text-[18px]">Calories consumed</p>
         </div>
 
         <div
           class="bg-grayPrimary border-[1px] text-primaryDark border-solid rounded-[5px] border-grayBorder flex flex-col gap-[.6rem] text-center py-[2rem] md:col-start-3 md:col-end-5"
         >
-          <h1 class="font-[700] text-[32px] leading-[35px]">300</h1>
+          <h1 class="font-[700] text-[32px] leading-[35px]" id="burnedCal">
+            300
+          </h1>
           <p class="capitalize font-[400] text-[18px]">Calories burned</p>
         </div>
 
         <div
           class="bg-grayPrimary border-[1px] text-primaryDark border-solid rounded-[5px] border-grayBorder flex flex-col gap-[.6rem] text-center py-[2rem] md:col-start-5 md:col-end-7"
         >
-          <h1 class="font-[700] text-[32px] leading-[35px]">1600</h1>
+          <h1 class="font-[700] text-[32px] leading-[35px]" id="remainingCal">
+            1600
+          </h1>
           <p class="capitalize font-[400] text-[18px]">Calories remaining</p>
         </div>
       </section>
