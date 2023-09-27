@@ -91,7 +91,7 @@
       <!-- progress bar -->
       <section class="my-[3rem]">
         <div class="bg-progress h-[1rem] w-full rounded-[20px]">
-          <div class="h-full bg-primary rounded-full" id="progress-bar"></div>
+          <div class="h-full bg-primary rounded-l-full" id="progress-bar"></div>
         </div>
       </section>
 
@@ -118,7 +118,7 @@
 
       <!--add meal / workout  -->
       <section
-        class="flex flex-col gap-[3rem] md:flex-row md:gap-[1rem] pt-[3rem] pb-[2rem]"
+        class="flex flex-col gap-[3rem] md:flex-row md:gap-[1rem] pt-[3rem] pb-[2rem] parent"
       >
         <!-- meals -->
         <div class="w-[100%] md:w-[50%]">
@@ -132,7 +132,8 @@
               meals / food items
             </h1>
             <button
-              class="text-white flex items-center px-[10px] py-[6px] gap-[5px] bg-primary rounded-[3px] capitalize font-[600]"
+              class="text-white flex items-center px-[10px] py-[6px] gap-[5px] bg-primary rounded-[3px] capitalize font-[600] add-btn"
+              id="add-meal-btn"
             >
               <i class="fa fa-plus"></i>
               <h4>add meal</h4>
@@ -141,32 +142,35 @@
 
           <!-- add meals form -->
           <section
-            id="collapse"
-            class="bg-grayPrimary border-[1px] border-solid border-grayBorder rounded-[5px] mb-[1rem] p-[10px] flex flex-col gap-[15px]"
+            id="meal-collapse"
+            class="hidden bg-grayPrimary border-[1px] border-solid border-grayBorder rounded-[5px] mb-[1rem] p-[10px] collapse-form"
           >
-            <div>
+            <form
+              action=""
+              id="meal-form"
+              class="flex flex-col gap-[15px] form-btn"
+            >
               <input
                 type="text"
                 id="enter-meal"
                 class="outline-none border-[1px] border-solid border-grayBorder rounded-[5px] bg-transparent p-[10px] text-primaryDark font-[400] w-full"
                 placeholder="Enter Meal or Items"
               />
-            </div>
 
-            <div>
               <input
-                type="text"
+                type="number"
                 id="enter-calories"
                 class="outline-none border-[1px] border-solid border-grayBorder rounded-[5px] bg-transparent p-[10px] text-primaryDark font-[400] w-full"
                 placeholder="Enter Calories"
               />
-            </div>
 
-            <button
-              class="text-white self-start px-[10px] py-[6px] gap-[5px] bg-primary rounded-[5px] capitalize font-[600]"
-            >
-              add meal item
-            </button>
+              <button
+                class="text-white self-start px-[10px] py-[6px] gap-[5px] bg-primary rounded-[5px] capitalize font-[600]"
+                type="submit"
+              >
+                add meal item
+              </button>
+            </form>
           </section>
 
           <section id="meal-items" class="flex flex-col gap-[10px]">
@@ -227,7 +231,7 @@
         </div>
 
         <!-- Workout -->
-        <div class="w-[100%] md:w-[50%]">
+        <div class="w-[100%] md:w-[50%] worl">
           <!-- header -->
           <div
             class="border-l-[3px] border-orange border-solid p-[10px] mb-[1rem] flex gap-[1rem] md:gap-0 items-center justify-between"
@@ -238,7 +242,8 @@
               Workouts
             </h1>
             <button
-              class="text-white flex items-center px-[10px] py-[6px] gap-[5px] bg-orange rounded-[3px] capitalize font-[600]"
+              class="text-white flex items-center px-[10px] py-[6px] gap-[5px] bg-orange rounded-[3px] capitalize font-[600] addd-btn"
+              id="add-workout-btn"
             >
               <i class="fa fa-plus"></i>
               <h4>add workout</h4>
@@ -247,32 +252,31 @@
 
           <!-- add workout form -->
           <section
-            id="collapse"
-            class="bg-grayPrimary border-[1px] border-solid border-grayBorder rounded-[5px] mb-[1rem] p-[10px] flex flex-col gap-[15px]"
+            id="workout-collapse"
+            class="hidden bg-grayPrimary border-[1px] border-solid border-grayBorder rounded-[5px] mb-[1rem] p-[10px] collapse-form"
           >
-            <div>
+            <form action="" id="workout-form" class="flex flex-col gap-[15px]">
               <input
                 type="text"
                 id="enter-workout"
                 class="outline-none border-[1px] border-solid border-grayBorder rounded-[5px] bg-transparent p-[10px] text-primaryDark font-[400] w-full"
                 placeholder="Enter Workout"
               />
-            </div>
 
-            <div>
               <input
-                type="text"
-                id="enter--workout-calories"
+                type="number"
+                id="enter-workout-calories"
                 class="outline-none border-[1px] border-solid border-grayBorder rounded-[5px] bg-transparent p-[10px] text-primaryDark font-[400] w-full"
                 placeholder="Enter Calories "
               />
-            </div>
 
-            <button
-              class="text-white self-start px-[10px] py-[6px] gap-[5px] bg-orange rounded-[5px] capitalize font-[600]"
-            >
-              add meal item
-            </button>
+              <button
+                class="text-white self-start px-[10px] py-[6px] gap-[5px] bg-orange rounded-[5px] capitalize font-[600]"
+                type="submit"
+              >
+                add workout item
+              </button>
+            </form>
           </section>
 
           <section id="workout-items" class="flex flex-col gap-[10px]">
@@ -337,6 +341,14 @@
         </div>
       </section>
     </main>
+
+    <!-- error message -->
+    <div
+      class="fixed text-white right-[5%] top-[5%] p-[1rem] rounded-[5px] bg-primary translate-x-[140%] transition-transform duration-700 ease-linear opacity-100 flex items-center gap-[10px] border-l-[5px] border-solid border-orange error"
+    >
+      <i class="fa fa-exclamation-triangle"></i>
+      <p>Please, comepletely fill out the form</p>
+    </div>
 
     <!-- set Daily Limit Modal -->
     <section class="bg-modal fixed inset-0 pt-[2rem] hidden">
