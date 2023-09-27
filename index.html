@@ -27,6 +27,7 @@
       <div class="flex items-center gap-[20px]">
         <button
           class="border-[1px] border-solid border-white rounded-[5px] text-white font-[400] text-[18px] py-[8px] px-[13px] hover:bg-white hover:text-primaryDark transition-all duration-100 ease-linear"
+          id="set-limit"
         >
           Set Daily Limit
         </button>
@@ -351,7 +352,7 @@
     </div>
 
     <!-- set Daily Limit Modal -->
-    <section class="bg-modal fixed inset-0 pt-[2rem] hidden">
+    <section class="bg-modal fixed inset-0 pt-[2rem] modal hidden">
       <!-- modal box -->
       <div class="bg-white rounded-[10px] py-[10px] mx-auto w-[40%]">
         <header
@@ -359,7 +360,7 @@
         >
           <h1 class="capitalize text-[20px] font-[400]">set daily limit</h1>
           <i
-            class="fa fa-times text-grayBorder text-[22px] font-light cursor-pointer"
+            class="fa fa-times text-grayBorder text-[22px] font-light cursor-pointer close-modal"
           ></i>
         </header>
 

@@ -111,6 +111,17 @@ class App {
       .addEventListener('submit', this._newWorkout.bind(this));
 
     document
+      .getElementById('set-limit')
+      .addEventListener('click', this._openModal.bind(this));
+
+    document
+      .querySelector('.close-modal')
+      .addEventListener('click', function () {
+        document.querySelector('.modal').classList.remove('active');
+        document.querySelector('body').classList.remove('active-body');
+      });
+
+    document
       .getElementById('add-workout-btn')
       .addEventListener('click', this._workoutCollapse.bind(this));
 
@@ -163,6 +174,13 @@ class App {
     this._tracker.addWorkout(workout);
     name.value = '';
     calorie.value = '';
+  }
+
+  _openModal(e) {
+    e.preventDefault();
+
+    document.querySelector('.modal').classList.add('active');
+    document.querySelector('body').classList.add('active-body');
   }
 
   _workoutCollapse(e) {

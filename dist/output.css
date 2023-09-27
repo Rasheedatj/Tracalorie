@@ -534,10 +534,6 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.collapse {
-  visibility: collapse;
-}
-
 .fixed {
   position: fixed;
 }
@@ -973,12 +969,20 @@ video {
   transition-timing-function: linear;
 }
 
+.active-body {
+  overflow: hidden;
+}
+
 .error.active {
   transform: translateX(0);
   opacity: 1;
 }
 
 .collapse-form.open {
+  display: block;
+}
+
+.modal.active {
   display: block;
 }
 
