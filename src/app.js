@@ -52,11 +52,25 @@ class Tracker {
     calorieRemainingEl.innerText = this._calorieLimit - this._totalCalories;
   }
 
+  _progress() {
+    const progressBar = document.getElementById('progress-bar');
+    const width =
+      100 -
+      ((this._calorieLimit - this._totalCalories) / this._calorieLimit) * 100;
+
+    progressBar.style.width = `${width}%`;
+
+    if (width <= 15) {
+      progressBar.style.background = '#dc3545';
+    }
+  }
+
   _render() {
     this._displayTotalCalorie();
     this._diaplayCaloriesConsumed();
     this._diaplayCaloriesBurned();
     this._calorieRemaining();
+    this._progress();
   }
 }
 
