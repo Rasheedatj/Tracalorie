@@ -632,12 +632,20 @@ video {
   width: 100%;
 }
 
+.w-\[100\%\] {
+  width: 100%;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
 
 .grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -680,12 +688,12 @@ video {
   gap: 5px;
 }
 
-.self-start {
-  align-self: flex-start;
+.gap-\[3rem\] {
+  gap: 3rem;
 }
 
-.overflow-hidden {
-  overflow: hidden;
+.self-start {
+  align-self: flex-start;
 }
 
 .rounded-\[10px\] {
@@ -845,12 +853,12 @@ video {
   padding-bottom: 8px;
 }
 
-.pt-\[\.5rem\] {
-  padding-top: .5rem;
+.pb-\[2rem\] {
+  padding-bottom: 2rem;
 }
 
-.pt-\[4rem\] {
-  padding-top: 4rem;
+.pt-\[\.5rem\] {
+  padding-top: .5rem;
 }
 
 .pt-\[2rem\] {
@@ -861,8 +869,12 @@ video {
   padding-top: 3rem;
 }
 
-.pb-\[2rem\] {
-  padding-bottom: 2rem;
+.pb-\[1rem\] {
+  padding-bottom: 1rem;
+}
+
+.pt-\[4rem\] {
+  padding-top: 4rem;
 }
 
 .text-center {
@@ -891,6 +903,10 @@ video {
 
 .text-\[40px\] {
   font-size: 40px;
+}
+
+.text-\[28px\] {
+  font-size: 28px;
 }
 
 .font-\[400\] {
@@ -925,6 +941,10 @@ video {
   line-height: 50px;
 }
 
+.text-grayBorder {
+  color: #0000002d;
+}
+
 .text-primaryDark {
   --tw-text-opacity: 1;
   color: rgb(33 37 41 / var(--tw-text-opacity));
@@ -933,15 +953,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-close {
-  --tw-text-opacity: 1;
-  color: rgb(222 226 230 / var(--tw-text-opacity));
-}
-
-.text-grayBorder {
-  color: #0000002d;
 }
 
 .outline-none {
@@ -978,8 +989,52 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:col-start-1 {
+    grid-column-start: 1;
+  }
+
+  .md\:col-start-4 {
+    grid-column-start: 4;
+  }
+
+  .md\:col-start-3 {
+    grid-column-start: 3;
+  }
+
+  .md\:col-start-5 {
+    grid-column-start: 5;
+  }
+
+  .md\:col-end-4 {
+    grid-column-end: 4;
+  }
+
+  .md\:col-end-7 {
+    grid-column-end: 7;
+  }
+
+  .md\:col-end-3 {
+    grid-column-end: 3;
+  }
+
+  .md\:col-end-5 {
+    grid-column-end: 5;
+  }
+
+  .md\:w-\[50\%\] {
+    width: 50%;
+  }
+
+  .md\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:items-center {
+    align-items: center;
   }
 
   .md\:justify-between {
@@ -988,5 +1043,13 @@ video {
 
   .md\:gap-0 {
     gap: 0px;
+  }
+
+  .md\:gap-\[1rem\] {
+    gap: 1rem;
+  }
+
+  .md\:text-\[32px\] {
+    font-size: 32px;
   }
 }
