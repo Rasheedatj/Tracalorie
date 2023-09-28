@@ -298,6 +298,7 @@ class App {
     const limitInput = document.getElementById('enter-limit');
     this._tracker.setLimit(+limitInput.value);
     document.querySelector('.modal').classList.remove('active');
+    document.querySelector('body').classList.remove('active-body');
   }
 
   removeItem(type, e) {
