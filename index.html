@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./dist/output.css" rel="stylesheet" />
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -55,7 +55,7 @@
           class="bg-primary flex flex-col gap-[.6rem] text-center text-white rounded-[5px] md:col-start-4 md:col-end-7 py-[2rem]"
         >
           <h1 class="font-[700] text-[32px] leading-[35px]" id="total-calories">
-            400
+            0
           </h1>
           <p class="capitalize font-[400] text-[18px]">gain/Loss</p>
         </div>
@@ -64,7 +64,7 @@
           class="bg-grayPrimary border-[1px] text-primaryDark border-solid rounded-[5px] border-grayBorder flex flex-col gap-[.6rem] text-center py-[2rem] md:col-start-1 md:col-end-3"
         >
           <h1 class="font-[700] text-[32px] leading-[35px]" id="consumedCal">
-            700
+            0
           </h1>
           <p class="capitalize font-[400] text-[18px]">Calories consumed</p>
         </div>
@@ -73,7 +73,7 @@
           class="bg-grayPrimary border-[1px] text-primaryDark border-solid rounded-[5px] border-grayBorder flex flex-col gap-[.6rem] text-center py-[2rem] md:col-start-3 md:col-end-5"
         >
           <h1 class="font-[700] text-[32px] leading-[35px]" id="burnedCal">
-            300
+            0
           </h1>
           <p class="capitalize font-[400] text-[18px]">Calories burned</p>
         </div>
@@ -83,7 +83,7 @@
           id="remaining-box"
         >
           <h1 class="font-[700] text-[32px] leading-[35px]" id="remainingCal">
-            1600
+            2000
           </h1>
           <p class="capitalize font-[400] text-[18px]">Calories remaining</p>
         </div>
@@ -92,7 +92,10 @@
       <!-- progress bar -->
       <section class="my-[3rem]">
         <div class="bg-progress h-[1rem] w-full rounded-[20px]">
-          <div class="h-full bg-primary rounded-l-full" id="progress-bar"></div>
+          <div
+            class="h-full bg-primary rounded-l-full transition-all duration-700 ease-linear"
+            id="progress-bar"
+          ></div>
         </div>
       </section>
 
@@ -160,7 +163,7 @@
 
               <input
                 type="number"
-                id="enter-calories"
+                id="enter-meal-calories"
                 class="outline-none border-[1px] border-solid border-grayBorder rounded-[5px] bg-transparent p-[10px] text-primaryDark font-[400] w-full"
                 placeholder="Enter Calories"
               />
@@ -174,65 +177,11 @@
             </form>
           </section>
 
-          <section id="meal-items" class="flex flex-col gap-[10px]">
-            <!-- Item 1 -->
-            <div
-              class="border-[1px] border-grayBorder border-solid p-[1rem] rounded-[5px] flex gap-[1rem] md:gap-0 justify-between items-center"
-            >
-              <h1 class="text-primaryDark font-[400] text-[24px]">Breakfast</h1>
-
-              <div
-                class="bg-primary text-white font-[500] text-[24px] rounded-[5px] py-[5px] px-[1rem]"
-              >
-                350
-              </div>
-              <div
-                class="cursor-pointer grid place-items-center w-[1.5rem] h-[1.5rem] bg-danger rounded-[5px] text-white"
-              >
-                <i class="fa fa-times"></i>
-              </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div
-              class="border-[1px] border-grayBorder border-solid p-[1rem] rounded-[5px] flex gap-[1rem] md:gap-0 justify-between items-center"
-            >
-              <h1 class="text-primaryDark font-[400] text-[24px]">Lunch</h1>
-
-              <div
-                class="bg-primary text-white font-[500] text-[24px] rounded-[5px] py-[5px] px-[1rem]"
-              >
-                620
-              </div>
-              <div
-                class="cursor-pointer grid place-items-center w-[1.5rem] h-[1.5rem] bg-danger rounded-[5px] text-white"
-              >
-                <i class="fa fa-times"></i>
-              </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div
-              class="border-[1px] border-grayBorder border-solid p-[1rem] rounded-[5px] flex gap-[1rem] md:gap-0 justify-between items-center"
-            >
-              <h1 class="text-primaryDark font-[400] text-[24px]">Dinner</h1>
-
-              <div
-                class="bg-primary text-white font-[500] text-[24px] rounded-[5px] py-[5px] px-[1rem]"
-              >
-                630
-              </div>
-              <div
-                class="cursor-pointer grid place-items-center w-[1.5rem] h-[1.5rem] bg-danger rounded-[5px] text-white"
-              >
-                <i class="fa fa-times"></i>
-              </div>
-            </div>
-          </section>
+          <section id="meal-items" class="flex flex-col gap-[10px]"></section>
         </div>
 
         <!-- Workout -->
-        <div class="w-[100%] md:w-[50%] worl">
+        <div class="w-[100%] md:w-[50%]">
           <!-- header -->
           <div
             class="border-l-[3px] border-orange border-solid p-[10px] mb-[1rem] flex gap-[1rem] md:gap-0 items-center justify-between"
@@ -280,65 +229,10 @@
             </form>
           </section>
 
-          <section id="workout-items" class="flex flex-col gap-[10px]">
-            <!-- Item 1 -->
-            <div
-              class="border-[1px] border-grayBorder border-solid p-[1rem] rounded-[5px] flex gap-[1rem] md:gap-0 justify-between items-center"
-            >
-              <h1 class="text-primaryDark font-[400] text-[24px]">
-                Threadmill 1 Hour
-              </h1>
-
-              <div
-                class="bg-orange text-white font-[500] text-[24px] rounded-[5px] py-[5px] px-[1rem]"
-              >
-                400
-              </div>
-              <div
-                class="cursor-pointer grid place-items-center w-[1.5rem] h-[1.5rem] bg-danger rounded-[5px] text-white"
-              >
-                <i class="fa fa-times"></i>
-              </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div
-              class="border-[1px] border-grayBorder border-solid p-[1rem] rounded-[5px] flex gap-[1rem] md:gap-0 justify-between items-center"
-            >
-              <h1 class="text-primaryDark font-[400] text-[24px]">
-                Bike 90 Minutes
-              </h1>
-
-              <div
-                class="bg-orange text-white font-[500] text-[24px] rounded-[5px] py-[5px] px-[1rem]"
-              >
-                500
-              </div>
-              <div
-                class="cursor-pointer grid place-items-center w-[1.5rem] h-[1.5rem] bg-danger rounded-[5px] text-white"
-              >
-                <i class="fa fa-times"></i>
-              </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div
-              class="border-[1px] border-grayBorder border-solid p-[1rem] rounded-[5px] flex gap-[1rem] md:gap-0 justify-between items-center"
-            >
-              <h1 class="text-primaryDark font-[400] text-[24px]">Streches</h1>
-
-              <div
-                class="bg-orange text-white font-[500] text-[24px] rounded-[5px] py-[5px] px-[1rem]"
-              >
-                130
-              </div>
-              <div
-                class="cursor-pointer grid place-items-center w-[1.5rem] h-[1.5rem] bg-danger rounded-[5px] text-white"
-              >
-                <i class="fa fa-times"></i>
-              </div>
-            </div>
-          </section>
+          <section
+            id="workout-items"
+            class="flex flex-col gap-[10px]"
+          ></section>
         </div>
       </section>
     </main>
@@ -354,13 +248,13 @@
     <!-- set Daily Limit Modal -->
     <section class="bg-modal fixed inset-0 pt-[2rem] modal hidden">
       <!-- modal box -->
-      <div class="bg-white rounded-[10px] py-[10px] mx-auto w-[40%]">
+      <div class="bg-white rounded-[10px] py-[10px] mx-auto w-[90%] md:w-[40%]">
         <header
           class="flex justify-between items-center p-[10px] border-b-[1px] border-solid border-grayBorder"
         >
           <h1 class="capitalize text-[20px] font-[400]">set daily limit</h1>
           <i
-            class="fa fa-times text-grayBorder text-[22px] font-light cursor-pointer close-modal"
+            class="fa fa-times text-grayBorder text-[24px] font-light cursor-pointer close-modal"
           ></i>
         </header>
 
@@ -369,11 +263,12 @@
           <input
             type="number"
             id="enter-limit"
-            class="outline-none pt-[.5rem] border-[1px] border-solid border-grayBorder rounded-[5px] bg-transparent p-[10px] text-primaryDark font-[400] w-full"
+            class="outline-none mt-[.5rem] border-[1px] border-solid border-grayBorder rounded-[5px] bg-transparent p-[10px] text-primaryDark font-[400] w-full"
             placeholder="2000"
           />
           <button
-            class="text-white self-start px-[10px] py-[6px] gap-[5px] bg-primary rounded-[5px] capitalize font-[600] mt-[1rem]"
+            class="text-white self-start px-[10px] py-[6px] gap-[5px] bg-primary rounded-[5px] capitalize font-[600] mt-[1rem] save"
+            type="submit"
           >
             Save
           </button>

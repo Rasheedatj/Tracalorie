@@ -7,28 +7,73 @@ class Tracker {
 
     this._displayCalorieLimit();
     this._displayTotalCalorie();
+    this._diaplayCaloriesBurned();
+    this._calorieRemaining();
+    this._progress();
   }
 
   addMeal(meal) {
     this._meals.push(meal);
     this._totalCalories += meal.calorie;
+    this._displayNewItem(meal);
     this._render();
   }
 
   addWorkout(workout) {
     this._workouts.push(workout);
     this._totalCalories -= workout.calorie;
+    this._displayNewWorkout(workout);
+
     this._render();
   }
 
+  removeMeal(id) {
+    const index = this._meals.findIndex((meal) => meal.id === id);
+
+    if (index !== -1) {
+      const meal = this._meals[index];
+
+      this._totalCalories -= meal.calorie;
+      this._meals.splice(index, 1);
+      this._render();
+    }
+  }
+
+  removeWorkout(id) {
+    const index = this._workouts.findIndex((workout) => workout.id === id);
+
+    if (index !== -1) {
+      const workout = this._workouts[index];
+
+      this._totalCalories += workout.calorie;
+      this._workouts.splice(index, 1);
+      this._render();
+    }
+  }
+
+  setLimit(calories) {
+    this._calorieLimit = calories;
+    this._render();
+  }
+
+  reset() {
+    this._totalCalories = 0;
+    this._calorieLimit = 0;
+    this._meals = [];
+    this._workouts = [];
+    document.getElementById('progress-bar').style.width = '0%';
+    this._render();
+  }
+
+  // private methods
   _displayTotalCalorie() {
     const totalCalorieEl = document.getElementById('total-calories');
     totalCalorieEl.innerText = this._totalCalories;
   }
 
   _displayCalorieLimit() {
-    const totalCalorieEl = document.getElementById('limit');
-    totalCalorieEl.innerText = this._calorieLimit;
+    const calorieLimitEl = document.getElementById('limit');
+    calorieLimitEl.innerText = this._calorieLimit;
   }
 
   _diaplayCaloriesConsumed() {
@@ -73,8 +118,57 @@ class Tracker {
     }
   }
 
+  _displayNewItem(meal) {
+    const item = document.createElement('div');
+
+    item.innerHTML = `
+      <h1 class="text-primaryDark font-[400] text-[24px]">${meal.name}</h1>
+  
+      <div
+        class="bg-primary text-white font-[500] text-[24px] rounded-[5px] py-[5px] px-[1rem]"
+      >
+      ${meal.calorie}
+      </div>
+      <div
+        class="cursor-pointer grid place-items-center w-[1.5rem] h-[1.5rem] bg-danger rounded-[5px] text-white delete"
+      >
+        <i class="fa fa-times"></i>
+      </div>
+   `;
+    item.className =
+      'border-[1px] border-grayBorder border-solid p-[1rem] rounded-[5px] flex gap-[1rem] md:gap-0 justify-between items-center card';
+    item.setAttribute('data-id', meal.id);
+    document.getElementById(`meal-items`).appendChild(item);
+  }
+
+  _displayNewWorkout(workout) {
+    const item = document.createElement('div');
+    item.innerHTML = `
+    <h1 class="text-primaryDark font-[400] text-[24px]">
+      ${workout.name}
+    </h1>
+
+    <div
+      class="bg-orange text-white font-[500] text-[24px] rounded-[5px] py-[5px] px-[1rem]"
+    >
+   ${workout.calorie}
+    </div>
+    <div
+      class="cursor-pointer grid place-items-center w-[1.5rem] h-[1.5rem] bg-danger rounded-[5px] text-white delete"
+    >
+      <i class="fa fa-times"></i>
+    </div>
+
+ `;
+    item.className =
+      'border-[1px] border-grayBorder border-solid p-[1rem] rounded-[5px] flex gap-[1rem] md:gap-0 justify-between items-center card';
+    item.setAttribute('data-id', workout.id);
+    document.getElementById(`workout-items`).appendChild(item);
+  }
+
   _render() {
     this._displayTotalCalorie();
+    this._displayCalorieLimit();
     this._diaplayCaloriesConsumed();
     this._diaplayCaloriesBurned();
     this._calorieRemaining();
@@ -104,11 +198,11 @@ class App {
 
     document
       .getElementById('meal-form')
-      .addEventListener('submit', this._newMeal.bind(this));
+      .addEventListener('submit', this._newItem.bind(this, 'meal'));
 
     document
       .getElementById('workout-form')
-      .addEventListener('submit', this._newWorkout.bind(this));
+      .addEventListener('submit', this._newItem.bind(this, 'workout'));
 
     document
       .getElementById('set-limit')
@@ -128,13 +222,36 @@ class App {
     document
       .getElementById('add-meal-btn')
       .addEventListener('click', this._mealCollapse.bind(this));
+
+    document
+      .querySelector('.save')
+      .addEventListener('click', this._setLimit.bind(this));
+
+    document
+      .getElementById('meal-items')
+      .addEventListener('click', this.removeItem.bind(this, 'meal'));
+    document
+      .getElementById('workout-items')
+      .addEventListener('click', this.removeItem.bind(this, 'workout'));
+
+    document
+      .getElementById('filter-meal')
+      .addEventListener('input', this.filterItem.bind(this, 'meal'));
+
+    document
+      .getElementById('filter-workout')
+      .addEventListener('input', this.filterItem.bind(this, 'workout'));
+
+    document
+      .getElementById('reset')
+      .addEventListener('click', this.reset.bind(this));
   }
 
-  _newMeal(e) {
+  _newItem(type, e) {
     e.preventDefault();
 
-    const name = document.getElementById('enter-meal');
-    const calorie = document.getElementById('enter-calories');
+    const name = document.getElementById(`enter-${type}`);
+    const calorie = document.getElementById(`enter-${type}-calories`);
 
     // validate input
     if (name.value < 1 && calorie.value < 1) {
@@ -147,33 +264,16 @@ class App {
       return;
     }
 
-    const meal = new Meal(name.value, +calorie.value);
-    this._tracker.addMeal(meal);
-    name.value = '';
-    calorie.value = '';
-  }
-
-  _newWorkout(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('enter-workout');
-    const calorie = document.getElementById('enter-workout-calories');
-
-    // validate input
-    if (name.value < 1 && calorie.value < 1) {
-      document.querySelector('.error').classList.add('active');
-
-      setTimeout(function () {
-        document.querySelector('.error').classList.remove('active');
-      }, 3000);
-
-      return;
+    if (type === 'meal') {
+      const meal = new Meal(name.value, +calorie.value);
+      this._tracker.addMeal(meal);
+    } else {
+      const workout = new Workout(name.value, +calorie.value);
+      this._tracker.addWorkout(workout);
     }
-
-    const workout = new Workout(name.value, +calorie.value);
-    this._tracker.addWorkout(workout);
     name.value = '';
     calorie.value = '';
+    document.getElementById(`${type}-collapse`).classList.remove('open');
   }
 
   _openModal(e) {
@@ -192,12 +292,50 @@ class App {
     e.preventDefault();
     document.getElementById('meal-collapse').classList.toggle('open');
   }
+
+  _setLimit(e) {
+    e.preventDefault();
+    const limitInput = document.getElementById('enter-limit');
+    this._tracker.setLimit(+limitInput.value);
+    document.querySelector('.modal').classList.remove('active');
+  }
+
+  removeItem(type, e) {
+    if (
+      e.target.classList.contains('fa-times') ||
+      e.target.classList.contains('delete')
+    ) {
+      const id = e.target.closest('.card').getAttribute('data-id');
+
+      type === 'meal'
+        ? this._tracker.removeMeal(id)
+        : this._tracker.removeWorkout(id);
+      e.target.closest('.card').remove();
+    }
+  }
+
+  filterItem(type, e) {
+    const text = e.target.value.toLowerCase();
+    const items = document.querySelectorAll(`#${type}-items > div`);
+
+    items.forEach((item) => {
+      const itemName = item.childNodes[1].textContent.toLowerCase();
+      if (itemName.indexOf(text) !== -1) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  reset() {
+    console.log('object');
+    this._tracker.reset();
+    document.getElementById('remaining-box').style.background = '#f8f9fa';
+    document.getElementById('remaining-box').style.color = '#212529';
+    document.getElementById('meal-items').innerHTML = '';
+    document.getElementById('workout-items').innerHTML = '';
+  }
 }
 
 const initApp = new App();
-
-const tracker = new Tracker();
-const food = new Meal('lunch', 1000);
-tracker.addMeal(food);
-const workout = new Workout('run', 500);
-tracker.addWorkout(workout);
