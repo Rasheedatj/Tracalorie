@@ -245,6 +245,8 @@ class App {
     document
       .getElementById('reset')
       .addEventListener('click', this.reset.bind(this));
+
+    window.addEventListener('click', this.activeInput.bind(this));
   }
 
   _newItem(type, e) {
@@ -336,6 +338,23 @@ class App {
     document.getElementById('remaining-box').style.color = '#212529';
     document.getElementById('meal-items').innerHTML = '';
     document.getElementById('workout-items').innerHTML = '';
+  }
+
+  activeInput(e) {
+    const inputEl = document.querySelectorAll('.outline-none');
+
+    if (e.target.classList.contains('outline-none')) {
+      console.log('object');
+
+      inputEl.forEach((input) => {
+        input.classList.remove('active');
+      });
+      e.target.classList.add('active');
+    } else {
+      inputEl.forEach((input) => {
+        input.classList.remove('active');
+      });
+    }
   }
 }
 
