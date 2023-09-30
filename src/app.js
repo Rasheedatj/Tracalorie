@@ -122,10 +122,10 @@ class Tracker {
     const item = document.createElement('div');
 
     item.innerHTML = `
-      <h1 class="text-primaryDark font-[400] text-[24px]">${meal.name}</h1>
+      <h1 class="text-primaryDark font-[400] text-[18px] md:text-[24px] capitalize">${meal.name}</h1>
   
       <div
-        class="bg-primary py-[5px] px-[1rem] text-white font-[500] text-[24px] rounded-[5px] "
+        class="bg-primary py-[5px] px-[1rem] text-white font-[500] text-[18px] md:text-[24px] rounded-[5px] "
       >
       ${meal.calorie}
       </div>
@@ -144,12 +144,12 @@ class Tracker {
   _displayNewWorkout(workout) {
     const item = document.createElement('div');
     item.innerHTML = `
-    <h1 class="text-primaryDark font-[400] text-[24px]">
+    <h1 class="text-primaryDark font-[400] text-[18px] md:text-[24px] capitalize">
       ${workout.name}
     </h1>
 
     <div
-      class="bg-orange text-white font-[500] text-[24px] rounded-[5px] py-[5px] px-[1rem]"
+      class="bg-orange text-white font-[500] text-[18px] md:text-[24px] rounded-[5px] py-[5px] px-[1rem]"
     >
    ${workout.calorie}
     </div>
@@ -217,11 +217,11 @@ class App {
 
     document
       .getElementById('add-workout-btn')
-      .addEventListener('click', this._mealCollapse.bind(this, 'workout'));
+      .addEventListener('click', this._formCollapse.bind(this, 'workout'));
 
     document
       .getElementById('add-meal-btn')
-      .addEventListener('click', this._mealCollapse.bind(this, 'meal'));
+      .addEventListener('click', this._formCollapse.bind(this, 'meal'));
 
     document
       .querySelector('.save')
@@ -285,12 +285,7 @@ class App {
     document.querySelector('body').classList.add('active-body');
   }
 
-  // _workoutCollapse(e) {
-  //   e.preventDefault();
-  //   document.getElementById('workout-collapse').classList.toggle('open');
-  // }
-
-  _mealCollapse(type, e) {
+  _formCollapse(type, e) {
     e.preventDefault();
     document.getElementById(`${type}-collapse`).classList.toggle('open');
   }
