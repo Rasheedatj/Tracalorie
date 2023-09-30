@@ -125,7 +125,7 @@ class Tracker {
       <h1 class="text-primaryDark font-[400] text-[24px]">${meal.name}</h1>
   
       <div
-        class="bg-primary text-white font-[500] text-[24px] rounded-[5px] py-[5px] px-[1rem]"
+        class="bg-primary py-[5px] px-[1rem] text-white font-[500] text-[24px] rounded-[5px] "
       >
       ${meal.calorie}
       </div>
@@ -217,11 +217,11 @@ class App {
 
     document
       .getElementById('add-workout-btn')
-      .addEventListener('click', this._workoutCollapse.bind(this));
+      .addEventListener('click', this._mealCollapse.bind(this, 'workout'));
 
     document
       .getElementById('add-meal-btn')
-      .addEventListener('click', this._mealCollapse.bind(this));
+      .addEventListener('click', this._mealCollapse.bind(this, 'meal'));
 
     document
       .querySelector('.save')
@@ -283,14 +283,14 @@ class App {
     document.querySelector('body').classList.add('active-body');
   }
 
-  _workoutCollapse(e) {
-    e.preventDefault();
-    document.getElementById('workout-collapse').classList.toggle('open');
-  }
+  // _workoutCollapse(e) {
+  //   e.preventDefault();
+  //   document.getElementById('workout-collapse').classList.toggle('open');
+  // }
 
-  _mealCollapse(e) {
+  _mealCollapse(type, e) {
     e.preventDefault();
-    document.getElementById('meal-collapse').classList.toggle('open');
+    document.getElementById(`${type}-collapse`).classList.toggle('open');
   }
 
   _setLimit(e) {
@@ -320,7 +320,7 @@ class App {
     const items = document.querySelectorAll(`#${type}-items > div`);
 
     items.forEach((item) => {
-      const itemName = item.childNodes[1].textContent.toLowerCase();
+      const itemName = item.firstElementChild.textContent.toLowerCase();
       if (itemName.indexOf(text) !== -1) {
         item.style.display = 'flex';
       } else {

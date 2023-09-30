@@ -17,3 +17,16 @@
 .modal.active {
   display: block;
 }
+
+.card {
+  animation: slideUp 300ms ease-in-out;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
