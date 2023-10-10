@@ -154,7 +154,7 @@ class Tracker {
    ${workout.calorie}
     </div>
     <div
-      class="cursor-pointer grid place-items-center w-[1.5rem] h-[1.5rem] bg-danger rounded-[5px] text-white delete"
+      class="cursor-pointer grid place-items-center w-7 h-7 bg-danger rounded-[5px] text-white delete"
     >
       <i class="fa fa-times"></i>
     </div>
@@ -327,7 +327,6 @@ class App {
   }
 
   reset() {
-    console.log('object');
     this._tracker.reset();
     document.getElementById('remaining-box').style.background = '#f8f9fa';
     document.getElementById('remaining-box').style.color = '#212529';
@@ -339,8 +338,6 @@ class App {
     const inputEl = document.querySelectorAll('.outline-none');
 
     if (e.target.classList.contains('outline-none')) {
-      console.log('object');
-
       inputEl.forEach((input) => {
         input.classList.remove('active');
       });

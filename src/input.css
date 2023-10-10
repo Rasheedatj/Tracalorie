@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;1,100;1,400;1,500&family=Unica+One&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.home {
+  font-family: 'Inter', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+  /* font-family: 'Unica One', cursive; */
+}
 .active-body {
   overflow: hidden;
 }
