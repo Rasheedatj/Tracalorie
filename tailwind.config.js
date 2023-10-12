@@ -15,6 +15,10 @@ module.exports = {
         modal: '#0000002d',
         close: '#dee2e6',
       },
+      boxShadow: {
+        '3xl': ' 0 0 10px rgba(0, 0, 0, 0.2)',
+        '5xl': ' 0 0 10px rgba(0, 0, 0, 0.5)',
+      },
     },
   },
   plugins: [],
