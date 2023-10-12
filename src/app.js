@@ -125,9 +125,9 @@ class Tracker {
       <h1 class="text-primaryDark font-[400] text-[18px] md:text-[24px] capitalize">${meal.name}</h1>
   
       <div
-        class="bg-primary  text-white font-[500] text-[18px] md:text-[24px] rounded-[5px] "
+        class="bg-primary  text-white font-[500] text-[18px] md:text-[24px] rounded-[5px] py-[5px] px-[1rem]"
       >
-      <p class="p-[1rem]">${meal.calorie}</p>
+      <p >${meal.calorie}</p>
 
       </div>
       <div
@@ -137,7 +137,7 @@ class Tracker {
       </div>
    `;
     item.className =
-      'border-[1px] border-grayBorder border-solid p-[1rem] rounded-[5px] flex gap-[1rem]  justify-between items-center card';
+      'border-[1px] border-grayBorder border-solid p-[1rem] rounded-[5px] flex   justify-between items-center card';
     item.setAttribute('data-id', meal.id);
     document.getElementById(`meal-items`).appendChild(item);
   }
@@ -152,7 +152,7 @@ class Tracker {
     <div
       class="bg-orange text-white font-[500] text-[18px] md:text-[24px] rounded-[5px] py-[5px] px-[1rem]"
     >
-<p class="p-[1rem]">${workout.calorie}</p>
+<p ">${workout.calorie}</p>
     </div>
     <div
         class="cursor-pointer grid place-items-center w-[1.5rem] h-[1.5rem] bg-danger rounded-[5px] text-white delete"
