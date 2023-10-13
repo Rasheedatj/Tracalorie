@@ -1,0 +1,74 @@
+# Tracalorie Web App
+
+A Calorie Tracker Application
+
+## Project Overview
+
+The Traclorie web application is a straightforward application that help users keep track of their calorie intake. Users can organize thier meals and workout, set a daily limit and work towards the limit. It provides an easy way to ensure healthy calorie consumption.
+
+## Motivation
+
+We developed this app to help users stay fit by saving their calories consumed and calories burned. It provides an easier calorie monitoring system to ensure healthy living.
+
+## Features
+
+- Set a daily limit
+- Add meals
+- Add workout
+- Remove meal
+- Remove workout
+- Reset
+- Filter meals / workouts
+
+## Getting Started
+
+1. Clone the project repository to your local machine.
+2. Install existing tailwind dependencies:
+
+   ```
+   npm install
+   ```
+
+3. Build and watch changes
+   ```
+   npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+   ```
+4. Open the `index.html` file in your web browser.
+
+## Usage
+
+- To add a new meal, click the "Add meal" button.
+- To add a new workout, click the "Add workout" button.
+- To set daily limit, click the "Set daily limit" button.
+- To reset yout logs, click the 'Reset' button.
+- To delete a meal / workout, click the "Cancel" icon next to it.
+
+## Contributing
+
+I welcome contributions from developers. If you'd like to contribute to the project, please follow these guidelines:
+
+- Fork the repository
+- Create a new branch for your feature or bug fix
+- Submit a pull request with a clear description of your changes
+
+## Roadmap
+
+In the future, we plan to add the following features:
+
+- Inspiration API that generates daily quotes to keeps users going.
+
+## Acknowledgments
+
+I'd like to thank the designer [Matthew ](https://github.com/RasheedatJ) for their contributions and inspiration to the design of this web application.
+
+## Contact
+
+For questions or feedback, please contact me at jinaduikeoluwa@gmail.com.
+
+<!-- ## Additional Information
+
+Please note that this is a fictional project created for demonstration purposes. -->
+
+## About the Author
+
+The Traclorie Web App was created by [Jinadu Rasheedat](https://www.linkedin.com/in/rashedat-jinadu/). Rasheedat is a software developer with a passion for creating user-friendly applications.
