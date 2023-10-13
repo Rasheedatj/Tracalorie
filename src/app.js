@@ -418,16 +418,18 @@ class App {
   }
 
   removeItem(type, e) {
-    if (
-      e.target.classList.contains('fa-times') ||
-      e.target.classList.contains('delete')
-    ) {
-      const id = e.target.closest('.card').getAttribute('data-id');
+    if (window.confirm('Do you want to remove this item?')) {
+      if (
+        e.target.classList.contains('fa-times') ||
+        e.target.classList.contains('delete')
+      ) {
+        const id = e.target.closest('.card').getAttribute('data-id');
 
-      type === 'meal'
-        ? this._tracker.removeMeal(id)
-        : this._tracker.removeWorkout(id);
-      e.target.closest('.card').remove();
+        type === 'meal'
+          ? this._tracker.removeMeal(id)
+          : this._tracker.removeWorkout(id);
+        e.target.closest('.card').remove();
+      }
     }
   }
 
@@ -446,11 +448,13 @@ class App {
   }
 
   reset() {
-    this._tracker.reset();
-    document.getElementById('remaining-box').style.background = '#f8f9fa';
-    document.getElementById('remaining-box').style.color = '#212529';
-    document.getElementById('meal-items').innerHTML = '';
-    document.getElementById('workout-items').innerHTML = '';
+    if (window.confirm('Are you sure you want to reset?')) {
+      this._tracker.reset();
+      document.getElementById('remaining-box').style.background = '#f8f9fa';
+      document.getElementById('remaining-box').style.color = '#212529';
+      document.getElementById('meal-items').innerHTML = '';
+      document.getElementById('workout-items').innerHTML = '';
+    }
   }
 
   activeInput(e) {
