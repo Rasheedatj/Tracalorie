@@ -6,6 +6,19 @@ A Calorie Tracker Application
 
 The Traclorie web application is a straightforward application that help users keep track of their calorie intake. Users can organize thier meals and workout, set a daily limit and work towards the limit. It provides an easy way to ensure healthy calorie consumption.
 
+## Technologies Used
+
+Here are the technologies and tools that were used to build this project:
+
+- **Frontend Framework**: [Tailwind](https://tailwindcss.com/)
+  ![Tailwind](./src/images/tailwindlogo.png)
+
+- **Frontend Language**: [Javascript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
+  ![Javascript](./src/images/js_logo.png)
+
+- **Version contron & Deplyment**: [GitHub](https://github.com/)
+  ![GitHub](./src/images/github_logo.png)
+
 ## Motivation
 
 We developed this app to help users stay fit by saving their calories consumed and calories burned. It provides an easier calorie monitoring system to ensure healthy living.
@@ -53,7 +66,7 @@ I welcome contributions from developers. If you'd like to contribute to the proj
 
 ## Roadmap
 
-In the future, we plan to add the following features:
+In the future, I plan to add the following features:
 
 - Inspiration API that generates daily quotes to keeps users going.
 

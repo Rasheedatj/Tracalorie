@@ -474,8 +474,9 @@ class App {
 }
 
 async function getquote() {
-  const data = await fetch('https://type.fit/api/quotes');
+  const data = await fetch('https://api.quotable.io/random');
   const result = await data.json();
+  console.log(result);
 
   document.querySelector('.motivate').classList.add('active');
 }
